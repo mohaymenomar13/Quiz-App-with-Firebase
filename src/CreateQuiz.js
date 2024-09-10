@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -24,7 +24,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function CreateQuiz(props) {
+
+  const user = auth.currentUser;
+
   const [questions, setQuestions] = useState([]);
+
+  const fetchQuizzes = useCallback(async () => {
+    if (props.quizId !== null) {
+      const fetchQuiz = db.collection('quizzes').doc(user.uid).collection('userQuizzes').doc(props.quizId);
+      const snapshot = await fetchQuiz.get();
+      const quizData = snapshot.data();
+      setQuizTitle(quizData.title);
+      setQuestions(quizData.questions);
+    }
+  }, [user.uid, props.quizId]);
+
+  useEffect(() => {
+    fetchQuizzes();
+  }, [fetchQuizzes]);
+
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [editQuestion, setEditQuestion] = useState('');
@@ -70,6 +88,9 @@ function CreateQuiz(props) {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
+    if (props.quizId !== null) {
+      await db.collection('quizzes').doc(user.uid).collection('userQuizzes').doc(props.quizId).delete();
+    }
     setShowDialog(false);
     window.location.href = '';
   };
@@ -211,19 +232,19 @@ function CreateQuiz(props) {
       <div className="dialog-overlay">
         <div className="dialog-content">
           <h2 className="dialog-title">Edit Question</h2>
-          <label className="dialog-label">Question:</label>
-          <input
-            type="text"
-            className="dialog-input"
-            value={editQuestion}
-            onChange={(e) => setEditQuestion(e.target.value)}
-          />
           <label className="dialog-label">Answer:</label>
           <input
             type="text"
             className="dialog-input"
             value={editAnswer}
             onChange={(e) => setEditAnswer(e.target.value)}
+          />
+          <label className="dialog-label">Question:</label>
+          <input
+            type="text"
+            className="dialog-input"
+            value={editQuestion}
+            onChange={(e) => setEditQuestion(e.target.value)}
           />
           <div className='div-dialog'>
             <div className="dialog-buttons-1">

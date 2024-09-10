@@ -38,11 +38,21 @@ function DashBoard(props) {
     useEffect(() => {
       fetchQuizzes();
     }, [fetchQuizzes]);
-    
-      const logout = () => {
-        auth.signOut();
-        window.location.href = '/';
-      }
+
+    const logout = () => {
+      auth.signOut();
+      window.location.href = '/';
+    }
+
+    const handleEditQuiz = (quizId) => {
+      props.setQuizId(quizId);
+      props.setCrteQuiz(true); 
+    }
+
+    const handleStartQuiz = (quizQuestions) => {
+      props.setQuizQuestions(quizQuestions);
+      props.setQuizStart(true);
+    }
     
     return (
             <div className="container">
@@ -60,17 +70,20 @@ function DashBoard(props) {
                 </div>
               </header>
               <div className="quiz-grid">
+                
                 {quizzes.map((quiz) => (
                   <div key={quiz.id} className="quiz-card" id={quiz.id}>
                     <h2 className="quiz-title">{quiz.title}</h2>
                     <p className="quiz-description">Created at: {quiz.createdAt?.toDate().toLocaleString()}</p>
+                    <p className='quiz-description'>Total Question(s): {quiz.questions.length}</p>
                     <div className="button-group">
-                      <button className="start-button">Start Quiz</button>
-                      <button className="review-button">Review / Edit</button>
+                      <button className="start-button" onClick={() => handleStartQuiz(quiz.questions)}>Start Quiz</button>
+                      <button className="review-button" onClick={() => handleEditQuiz(quiz.id)}>Review / Edit</button>
                       <DeleteDialog quizId={quiz.id} />
                     </div>
                   </div>
                 ))}
+
               </div>
           </div>
         );

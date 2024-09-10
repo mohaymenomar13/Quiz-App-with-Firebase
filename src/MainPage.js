@@ -5,6 +5,7 @@ import 'firebase/compat/auth';
 
 import DashBoard from './DashBoard';
 import CreateQuiz from './CreateQuiz';
+import StartQuiz from './StartQuiz';
 import "./DashBoard.css";
 import './CreateQuiz.css';
 
@@ -17,23 +18,29 @@ firebase.initializeApp({
   appId: "1:731028648256:web:0e6d9b31841f3ee47e8aa5"
 });
 
-const auth = firebase.auth(); 
-const db = firebase.firestore();
-
 let i = 0;
 
 function MainPage() {
   i++;
 
   const [crteQuiz, setCrteQuiz] = useState(false);
-  console.log(crteQuiz);
+  const [quizId , setQuizId] = useState(null);
+  const [quizStart, setQuizStart] = useState(false);
+  const [quizQuestions, setQuizQuestions] = useState(null);
 
+  console.log(quizId);
   if (i >= 2) {
-    return (
-      <div>
-        {crteQuiz ? <CreateQuiz setCrteQuiz={setCrteQuiz} /> : <DashBoard setCrteQuiz={setCrteQuiz} />}
-      </div>
-    )
+    if (quizQuestions !== null && quizStart !== false) {
+      return (
+        <StartQuiz quizQuestions={quizQuestions} />
+      )
+    } else {
+      return (
+        <div>
+          {crteQuiz ? <CreateQuiz setCrteQuiz={setCrteQuiz} quizId={quizId} /> : <DashBoard setQuizQuestions={setQuizQuestions} setQuizStart={setQuizStart} setCrteQuiz={setCrteQuiz} setQuizId={setQuizId} />}
+        </div>
+      )
+    }
   } else {
     return (
       <div>
