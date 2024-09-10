@@ -1,0 +1,205 @@
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.action-button {
+  color: white;
+}
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem; /* mb-6 */
+  }
+  
+  .title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: bold;
+    color: var(--primary);
+  }
+  
+  .user-btn {
+    display: flex;
+    align-items: center;
+  }
+  
+  .greeting {
+    color: var(--muted-foreground);
+    margin-right: 1rem; /* mr-4 */
+  }
+
+  .createBtn {
+    background-color: rgba(253, 126, 20, 0.8); /* hover:bg-accent/80 */
+    color: var(--destructive-foreground);
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* shadow-md */
+    text-align: center;
+  }
+  
+  .logout-button {
+    background-color: rgba(220, 53, 69, 0.8); /* hover:bg-destructive/80 */
+    color: var(--destructive-foreground);
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* shadow-md */
+  }
+  
+  .logout-button:hover {
+    background-color: rgba(220, 53, 69, 0.8); /* hover:bg-destructive/80 */
+  }
+  
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* gap-6 */
+  }
+  
+  @media (max-width: 700px) {
+    body {
+      overflow-x: hidden;
+    }
+    .user-btn {
+      flex-direction:column;
+      justify-content: center;
+      height: 100px;
+   }
+
+   #createBtnTxt {
+      font-size: 15px;
+    }
+
+    .createBtn {
+      position: absolute;
+      width: 115px;
+      margin-top: 80px;
+      right: -9px;
+    }
+
+    .quiz-grid {
+        padding-top: 20px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .quiz-grid {
+      grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+    }
+  }
+  
+  .quiz-card {
+    background-color: #606c38; /* Earthy Green */
+    padding: 1rem; /* p-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* shadow-md */
+  }
+  
+  .quiz-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .quiz-description {
+    color: var(--muted-foreground);
+    margin-bottom: 1rem;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem; /* mt-4 */
+  }
+  
+  button {
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-button {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    background-color: rgba(253, 126, 20, 0.8); /* hover:bg-accent/80 */
+  }
+  
+  .review-button {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    background-color: rgba(108, 117, 125, 0.8); /* hover:bg-secondary/80 */
+  }
+  
+  .delete-button {
+    background-color: rgba(220, 53, 69, 0.8); /* hover:bg-destructive/80 */
+    color: var(--destructive-foreground);
+  }
+
+#deleteDialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#deleteDialog-content {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #606c38; /* Earthy Green */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fefae0; /* Light Cream */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#deleteDialog-content::backdrop {
+    backdrop-filter: blur(1.5px);
+}
+
+.dialog-delete-btn {
+    padding: 10px;
+    background-color: #dda15e; /* Warm Sand */
+    color: #283618; /* Dark Olive Green */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 16px;
+}
+
+.user-avatar {
+  width: 2rem; /* w-6 */
+  height: 2rem; /* h-6 */
+  margin-top: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,261 @@
+
+
+.createquiz-container {
+    
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #606c38; /* Darker green for container background */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .createquiz-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #dda15e; /* Accent color for title */
+  }
+  
+  .createquiz-form-group {
+    margin-bottom: 16px;
+  }
+  
+  .createquiz-form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fefae0; /* Light font color for labels */
+    margin-bottom: 8px;
+  }
+  
+  .createquiz-form-input {
+    width: 98.8%;
+    padding: 8px;
+    font-size: 14px;
+    color: #283618; /* Darker text color */
+    background-color: #fefae0; /* Lighter input background */
+    border: 1px solid #dda15e; /* Accent border color */
+    border-radius: 4px;
+  }
+  
+  .createquiz-form-button {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: 50px;            /* Set the button's height */
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fefae0; /* Light text color */
+    background-color: #bc6c25; /* Button background color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .createquiz-form-button:hover {
+    background-color: #dda15e; /* Lighter hover color */
+  }
+  
+  #createquiz-question-list {
+    margin-top: 24px;
+  }
+  
+  .question-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: -35px;
+    border-bottom: 1px solid #fefae0; /* Light border color */
+  }
+  
+  .question-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fefae0; /* Light text color */
+  }
+  
+  .answer-text {
+    font-size: 14px;
+    color: #dda15e; /* Accent text color for answers */
+  }
+  
+  .action-buttons {
+    display: flex;
+  }
+  
+  .action-button {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    font-size: 14px;
+    color: white; /* Accent color for action buttons */
+    margin-left: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 70px;
+  }
+  
+  .action-button:hover {
+    background-color: #bc6c25; /* Hover color */
+  }
+
+.createquiz-save-button {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  height: 50px;            /* Set the button's height */
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fefae0; /* Light text color */
+  background-color: #dda15e; /* Button background color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.createquiz-save-button:hover {
+  background-color: #bc6c25; /* Hover color */
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-content {
+  background-color: #606c38; /* Background color matching the theme */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fefae0; /* Light text color */
+  margin-bottom: 16px;
+}
+
+.dialog-label {
+  font-size: 14px;
+  color: #fefae0; /* Light text color */
+  margin-bottom: 8px;
+  display: block;
+}
+
+.dialog-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  color: #283618; /* Darker text color */
+  background-color: #fefae0; /* Lighter input background */
+  border: 1px solid #dda15e; /* Accent border color */
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content:space-between;
+}
+
+.dialog-buttons-1 {
+  display: flex;
+  justify-content:space-between;
+  width: 200px;
+}
+
+.dialog-buttons-1 button {
+  color: white;
+
+}
+
+.dialog-cancel-button-delete {
+  background-color: #dda15e;
+}
+
+.dialog-delete-button {
+  background-color: #d14343;
+}
+
+.div-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-save-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fefae0;
+  background-color: #bc6c25;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialog-save-button:hover {
+  background-color: #dda15e;
+}
+
+.dialog-cancel-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fefae0;
+  background-color: #d14343;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialog-cancel-button:hover {
+  background-color: #b03131;
+}
+
+.createquiz-exit-button {
+  height: 20px;
+  background-color: #b03131;
+  color: white;
+}
+
+.exit-button-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+@media (max-width: 700px) {
+  .createquiz-container {
+    margin-top: 0;
+  }
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    width: 50px;
+  }
+  .createquiz-form-input {
+    width: 93%;
+  }
+}
