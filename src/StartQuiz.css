@@ -1,0 +1,291 @@
+.sq-main-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #283618; /* Dark Olive Green */
+    color: #fefae0; /* Light Cream */
+}
+
+.sq-quiz-container {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.sq-question-card, .stats-card {
+    background-color: #606c38; /* Earthy Green */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 16px;
+    flex: 1;
+}
+
+.stats-card {
+    max-width: 300px;
+}
+
+.result-card {
+    display: none; 
+    text-align: center;
+    width: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+    .sq-quiz-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+
+    .sq-question-card {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+
+    .stats-card {
+        display: none;
+    }
+
+    #exitquiz-btn {
+        max-width: 80%;
+        transform: translate(15%, 0%);
+    }
+}
+
+#sq-question-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.sq-question-card h2, .stats-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: #fefae0; /* Light Cream */
+}
+
+.sq-question-card p, .stats-card p {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: #fefae0; /* Light Cream */
+}
+
+.sq-question {
+    /* Add a maximum width and height for the question-text element */
+    max-width: 100%;
+    max-height: 150px;
+    overflow-y: scroll;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+#sq-question-text {
+    /* Set the font size to a larger value */
+    font-size: 1.5rem;
+    /* Add a transition effect for the font size */
+    transition: font-size 0.3s;
+}
+
+@media (max-width: 599px) {
+    #sq-question-text {
+        font-size: 1.5rem;
+    }
+    #sq-question-text::after {
+        content: "";
+    }
+}
+
+.sq-question:hover #sq-question-text {
+    /* Decrease the font size when the sq-question-card is hovered */
+    font-size: 1rem;
+}
+
+#sq-question-text::after {
+    /* Add an ellipsis (...) at the end of the text if it overflows */
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 5px;
+}
+
+.sq-question:hover #sq-question-text::after {
+    /* Hide the ellipsis when the sq-question-card is hovered */
+    display: none;
+}
+
+.sq-input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #dda15e; /* Warm Sand */
+    font-size: 1rem;
+    box-sizing: border-box;
+    color: #283618; /* Dark Olive Green */
+    background-color: #fefae0; /* Light Cream */
+}
+
+.sq-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #dda15e; /* Warm Sand */
+    color: #283618; /* Dark Olive Green */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sq-submit-btn:hover {
+    background-color: #bc6c25; /* Burnt Orange */
+}
+
+.sq-progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #fefae0; /* Light Cream */
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+.sq-progress-bar {
+    width: 20%;
+    height: 100%;
+    background-color: #dda15e; /* Warm Sand */
+    border-radius: 4px;
+}
+
+#dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
+
+#dialog-content {
+    background-color: #606c38; /* Earthy Green */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fefae0; /* Light Cream */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.dialog-btn {
+    padding: 10px;
+    background-color: #dda15e; /* Warm Sand */
+    color: #283618; /* Dark Olive Green */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 16px;
+}
+
+.dialog-btn:hover {
+    background-color: #bc6c25; /* Burnt Orange */
+}
+
+/* Save and Exit Button */
+.sq-save-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #dda15e; /* Warm Sand */
+    color: #283618; /* Dark Olive Green */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 16px;
+}
+
+.sq-save-btn:hover {
+    background-color: #bc6c25; /* Burnt Orange */
+}
+
+/* Save Confirmation Dialog */
+#saveDialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#saveDialog-content {
+    background-color: #606c38; /* Earthy Green */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fefae0; /* Light Cream */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#saveDialog .dialog-btn {
+    width: 100px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #dda15e; /* Warm Sand */
+    color: #283618; /* Dark Olive Green */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#saveDialog .dialog-btn:hover {
+    background-color: #bc6c25; /* Burnt Orange */
+}
+
+.notification-popup {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 0px 20%;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 9999;
+}
+
+.notification-popup.show {
+    opacity: 1;
+}

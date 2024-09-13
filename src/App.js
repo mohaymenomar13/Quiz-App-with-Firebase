@@ -30,10 +30,10 @@ function App() {
   const [user] = useAuthState(auth);
   
   console.log(i +" "+ user);
-  if (true) {
+  if (i > 1) {
     return (
       <div >
-        {true ? <MainPage /> : <SignIn />}
+        {user ? <MainPage /> : <SignIn />}
       </div>
       )
   } else {
