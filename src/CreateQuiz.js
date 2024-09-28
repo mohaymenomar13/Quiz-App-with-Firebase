@@ -128,7 +128,7 @@ function CreateQuiz(props) {
     setDeleteDialogOpen(false);
   };
 
-  return (<div className="createquiz-container" style={{backgroundColor: "red"}}>
+  return (<div className="createquiz-container">
     <div className='exit-button-div'>
       <button className="createquiz-exit-button" onClick={handleExit}>Exit</button>
     </div>
