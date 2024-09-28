@@ -2,7 +2,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
-import './SignIn.css';
 import googleLogo from './google-logo.png';
 import appLogo from './quiz-app-logo.png';
 
@@ -39,8 +38,10 @@ function SignIn() {
       </main>
 
       <footer>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a href="#">Privacy Policy</a>
         <span>|</span>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a href="#">Terms of Service</a>
       </footer>
     </div>

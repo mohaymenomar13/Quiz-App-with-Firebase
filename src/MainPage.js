@@ -6,8 +6,7 @@ import 'firebase/compat/auth';
 import DashBoard from './DashBoard';
 import CreateQuiz from './CreateQuiz';
 import StartQuiz from './StartQuiz';
-import "./DashBoard.css";
-import './CreateQuiz.css';
+
 
 firebase.initializeApp({
   apiKey: "AIzaSyBFHkb35yfmYkCdsDVqViIjbTi6XCxczLE",
@@ -24,15 +23,16 @@ function MainPage() {
   const [quizId , setQuizId] = useState(null);
   const [quizStart, setQuizStart] = useState(false);
   const [quizQuestions, setQuizQuestions] = useState(null);
+  const [quizTitle, setQuizTitle] = useState(null);
   
   if (quizQuestions !== null && quizStart !== false) {
     return (
-      <StartQuiz quizQuestions={quizQuestions} />
+      <StartQuiz quizQuestions={quizQuestions} quizTitle={quizTitle} />
     )
   } else {
     return (
       <div>
-        {crteQuiz ? <CreateQuiz setCrteQuiz={setCrteQuiz} quizId={quizId} /> : <DashBoard setQuizQuestions={setQuizQuestions} setQuizStart={setQuizStart} setCrteQuiz={setCrteQuiz} setQuizId={setQuizId} />}
+        {crteQuiz ? <CreateQuiz setCrteQuiz={setCrteQuiz} quizId={quizId} /> : <DashBoard setQuizTitle={setQuizTitle} setQuizQuestions={setQuizQuestions} setQuizStart={setQuizStart} setCrteQuiz={setCrteQuiz} setQuizId={setQuizId} />}
       </div>
     )
   }

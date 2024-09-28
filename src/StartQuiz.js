@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import './StartQuiz.css';
+import React, { useState, useEffect, useRef } from 'react';
 
 function StartQuiz(props) {
 
@@ -21,6 +20,7 @@ function StartQuiz(props) {
     const [mistakes, setMistakes] = useState(0);
     const [timeConsumed, setTimeConsumed] = useState(0);
     const [quizFinished, setQuizFinished] = useState(false);
+    const answerInputRef = useRef(null);
 
     useEffect(() => {
         const shuffledQuestions = shuffleArray(props.quizQuestions);
@@ -44,12 +44,10 @@ function StartQuiz(props) {
         return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    console.log(mistakenQuestions)
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (answerInput.toLowerCase() === currentQuestion.answer.toLowerCase()) {
+        if (answerInput.toLowerCase().replaceAll("s", "").replaceAll(" ", "").replaceAll("-", "") === currentQuestion.answer.toLowerCase().replaceAll("s", "").replaceAll(" ", "").replaceAll("-", "")) {
             setCorrectAnswers(correctAnswers + 1);
         } else {
             setMistakenQuestions([...mistakenQuestions, {question: currentQuestion.question, userAnswer: answerInput, answer: currentQuestion.answer}]);
@@ -66,6 +64,10 @@ function StartQuiz(props) {
             setQuizFinished(true);
             alert("Finished!");
         }
+
+        if (answerInputRef.current) {
+            answerInputRef.current.focus();
+        }
     };
 
     return (
@@ -74,7 +76,7 @@ function StartQuiz(props) {
                 <div className="sq-mistaken-questions-container">
                     <h2>Your Mistaken Questions</h2>
                     <p>Score: {questions.length-mistakes}/{questions.length}</p>
-                    <p>Percentage: {((questions.length-mistakes)/questions.length)*100}%</p>
+                    <p>Percentage: {Math.floor(((questions.length-mistakes)/questions.length)*100)}%</p>
                     {mistakenQuestions.length > 0 ? (
                         mistakenQuestions.map((mistake, index) => (
                             <div key={index} className="mistaken-question-card">
@@ -91,7 +93,7 @@ function StartQuiz(props) {
                 : 
                 (
                 <div className="sq-main-content">
-                    <h1 style={{fontSize: "2rem", fontWeight:"bold", marginBottom:"32px"}}>Test7</h1>
+                    <h1 style={{fontSize: "2rem", fontWeight:"bold", marginBottom:"32px"}}>{props.quizTitle}</h1>
                     <div className="sq-quiz-container">
                         <div className="sq-question-card">
                             <form onSubmit={handleSubmit}>
@@ -105,6 +107,7 @@ function StartQuiz(props) {
                                     id="answerInput" 
                                     value={answerInput} 
                                     onChange={(e) => setAnswerInput(e.target.value)}
+                                    ref={answerInputRef}
                                 />
                                 <button 
                                     id="submitBtn" 
@@ -122,7 +125,7 @@ function StartQuiz(props) {
                                 ></div>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
-                                <p style={{ fontSize: "0.875rem" }}>Question <span id="currentQuestionIndex">{currentQuestionIndex + 1}</span></p>
+                                <p style={{ fontSize: "0.875rem" }}>Question: <span id="currentQuestionIndex">{currentQuestionIndex + 1}/{questions.length}</span></p>
                                 <p style={{ fontSize: "0.875rem" }}>Time Consumed: <span id="timeConsumed" style={{fontWeight:"bold"}}>{formatTime(timeConsumed)}</span></p>
                             </div>
                             <div style={{ marginTop: -15, display: 'flex', justifyContent: 'space-between' }}>

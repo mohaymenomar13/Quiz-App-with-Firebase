@@ -5,13 +5,13 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
 firebase.initializeApp({
-    apiKey: "AIzaSyBFHkb35yfmYkCdsDVqViIjbTi6XCxczLE",
-    authDomain: "ngick-quizapp.firebaseapp.com",
-    projectId: "ngick-quizapp",
-    storageBucket: "ngick-quizapp.appspot.com",
-    messagingSenderId: "731028648256",
-    appId: "1:731028648256:web:0e6d9b31841f3ee47e8aa5"
-  });
+  apiKey: "AIzaSyBFHkb35yfmYkCdsDVqViIjbTi6XCxczLE",
+  authDomain: "ngick-quizapp.firebaseapp.com",
+  projectId: "ngick-quizapp",
+  storageBucket: "ngick-quizapp.appspot.com",
+  messagingSenderId: "731028648256",
+  appId: "1:731028648256:web:0e6d9b31841f3ee47e8aa5"
+});
 
 const auth = firebase.auth(); 
 const db = firebase.firestore();
@@ -49,7 +49,8 @@ function DashBoard(props) {
       props.setCrteQuiz(true); 
     }
 
-    const handleStartQuiz = (quizQuestions) => {
+    const handleStartQuiz = (quizQuestions, quizTitle) => {
+      props.setQuizTitle(quizTitle);
       props.setQuizQuestions(quizQuestions);
       props.setQuizStart(true);
     }
@@ -77,7 +78,7 @@ function DashBoard(props) {
                     <p className="quiz-description">Created at: {quiz.createdAt?.toDate().toLocaleString()}</p>
                     <p className='quiz-description'>Total Question(s): {quiz.questions.length}</p>
                     <div className="button-group">
-                      <button className="start-button" onClick={() => handleStartQuiz(quiz.questions)}>Start Quiz</button>
+                      <button className="start-button" onClick={() => handleStartQuiz(quiz.questions, quiz.title)}>Start Quiz</button>
                       <button className="review-button" onClick={() => handleEditQuiz(quiz.id)}>Review / Edit</button>
                       <DeleteDialog quizId={quiz.id} />
                     </div>

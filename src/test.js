@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -15,25 +15,16 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-function CreateQuiz(props) {
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+  }, { passive: false });
+});
 
-  const user = auth.currentUser;
+function CreateQuiz(props) {
+  console.log(`Creating Quiz`);
 
   const [questions, setQuestions] = useState([]);
-
-  const fetchQuizzes = useCallback(async () => {
-    if (props.quizId !== null) {
-      const fetchQuiz = db.collection('quizzes').doc(user.uid).collection('userQuizzes').doc(props.quizId);
-      const snapshot = await fetchQuiz.get();
-      const quizData = snapshot.data();
-      setQuizTitle(quizData.title);
-      setQuestions(quizData.questions);
-    }
-  }, [user.uid, props.quizId]);
-
-  useEffect(() => {
-    fetchQuizzes();
-  }, [fetchQuizzes]);
 
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
@@ -128,7 +119,8 @@ function CreateQuiz(props) {
     setDeleteDialogOpen(false);
   };
 
-  return (<div className="createquiz-container" style={{backgroundColor: "red"}}>
+  return (
+  <div className="createquiz-container" style={{backgroundColor: "red"}}>
     <div className='exit-button-div'>
       <button className="createquiz-exit-button" onClick={handleExit}>Exit</button>
     </div>

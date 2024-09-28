@@ -1,7 +1,10 @@
 
 
 .createquiz-container {
-    
+  /*
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  */
     margin: 0 auto;
     padding: 24px;
     background-color: #606c38; /* Darker green for container background */

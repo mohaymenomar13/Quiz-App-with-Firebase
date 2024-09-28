@@ -291,6 +291,8 @@
 }
 
 .sq-mistaken-questions-container {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     background-color: #283618; /* Dark Olive Green */
     padding: 20px;
     border-radius: 8px;
