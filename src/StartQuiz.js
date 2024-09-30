@@ -47,7 +47,7 @@ function StartQuiz(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (answerInput.toLowerCase().replaceAll("s", "").replaceAll(" ", "").replaceAll("-", "") === currentQuestion.answer.toLowerCase().replaceAll("s", "").replaceAll(" ", "").replaceAll("-", "")) {
+        if (answerInput.toLowerCase().replaceAll("s", "").replaceAll("e","").replaceAll(" ", "").replaceAll("-", "") === currentQuestion.answer.toLowerCase().replaceAll("s", "").replaceAll("e","").replaceAll(" ", "").replaceAll("-", "")) {
             setCorrectAnswers(correctAnswers + 1);
         } else {
             setMistakenQuestions([...mistakenQuestions, {question: currentQuestion.question, userAnswer: answerInput, answer: currentQuestion.answer}]);
@@ -77,6 +77,7 @@ function StartQuiz(props) {
                     <h2>Your Mistaken Questions</h2>
                     <p>Score: {questions.length-mistakes}/{questions.length}</p>
                     <p>Percentage: {Math.floor(((questions.length-mistakes)/questions.length)*100)}%</p>
+                    <p>Time Consumed: {formatTime(timeConsumed)}</p>
                     {mistakenQuestions.length > 0 ? (
                         mistakenQuestions.map((mistake, index) => (
                             <div key={index} className="mistaken-question-card">
