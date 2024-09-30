@@ -69,7 +69,6 @@ function StartQuiz(props) {
             answerInputRef.current.focus();
         }
     };
-
     return (
         <div>
             {quizFinished ? (
@@ -99,7 +98,7 @@ function StartQuiz(props) {
                         <div className="sq-question-card">
                             <form onSubmit={handleSubmit}>
                                 <div className="sq-question">
-                                    <p id="sq-question-text">{currentQuestion.question}</p>
+                                    <p id="sq-question-text" dangerouslySetInnerHTML={{ __html: currentQuestion.question }}></p>
                                 </div> 
                                 <input 
                                     type="text" 
