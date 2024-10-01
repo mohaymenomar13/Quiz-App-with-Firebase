@@ -80,7 +80,7 @@ function StartQuiz(props) {
                     {mistakenQuestions.length > 0 ? (
                         mistakenQuestions.map((mistake, index) => (
                             <div key={index} className="mistaken-question-card">
-                                <p><strong>Question:</strong> {mistake.question}</p>
+                                <p dangerouslySetInnerHTML={{ __html: mistake.question }}><strong>Question:</strong></p>
                                 <p><strong>Your Answer:</strong> {mistake.userAnswer}</p>
                                 <p><strong>Correct Answer:</strong> {mistake.answer}</p>
                             </div>
