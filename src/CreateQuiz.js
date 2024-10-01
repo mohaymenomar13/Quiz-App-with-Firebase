@@ -169,11 +169,10 @@ function CreateQuiz(props) {
         {questions.map((q, index) => (
           <li key={index} className="question-item">
             <div>
-              <p className="question-text">{q.question}</p>
+              <p className="question-text" dangerouslySetInnerHTML={{ __html: q.question }}></p>
               <p className="answer-text">Answer: {q.answer}</p>
             </div>
             <div className="action-buttons">
-              {/* Edit and Delete buttons can be implemented later */}
               <button className="action-button" onClick={() => handleEdit(index)}>Edit</button>
               <button className="action-button delete-button" onClick={() => openDeleteDialog(index)}>Delete</button>
             </div>
